@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useDataContext } from "../contexts/DataContext";
 
-export const RsvpModal = ({ eId, show, onClose }) => {
+export const RsvpModal = ({ id, show, onClose }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+
   const {
     state: { events },
     dispatch,
@@ -11,7 +12,7 @@ export const RsvpModal = ({ eId, show, onClose }) => {
 
   const rsvpHandler = () => {
     const updatedEventArr = events?.meetups?.map((meetup) =>
-      meetup?.id === eId ? { ...meetup, isPaid: !meetup?.isPaid } : meetup
+      meetup?.id === id ? { ...meetup, isPaid: !meetup?.isPaid } : meetup
     );
     console.log(updatedEventArr);
 
@@ -33,11 +34,13 @@ export const RsvpModal = ({ eId, show, onClose }) => {
             <p className="text-sm">Fill in your Information</p>
             <div className="flex flex-col gap-2">
               <input
+                required
                 onChange={(e) => setName(e.target.value)}
                 className="p-1 rounded border"
                 placeholder="Enter your name"
               />
               <input
+                required
                 onChange={(e) => setEmail(e.target.value)}
                 className="p-1 rounded border"
                 placeholder="Enter your email"
@@ -46,6 +49,7 @@ export const RsvpModal = ({ eId, show, onClose }) => {
 
             <p>* You have to make the payment at the Venue</p>
             <button
+              type="submit"
               className="bg-rose-600 text-white text-sm px-2 py-1 rounded"
               onClick={() => rsvpHandler()}
             >
