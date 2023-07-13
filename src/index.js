@@ -10,11 +10,11 @@ export { useDataContext };
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <DataProvider>
+    <DataProvider>
+      <BrowserRouter>
         <App />
-      </DataProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </DataProvider>
   </React.StrictMode>
 );
 
