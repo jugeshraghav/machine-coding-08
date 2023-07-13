@@ -32,29 +32,30 @@ export const RsvpModal = ({ id, show, onClose }) => {
           >
             <h1 className="text-2xl font-bold">Complete your RSVP</h1>
             <p className="text-sm">Fill in your Information</p>
-            <div className="flex flex-col gap-2">
-              <input
-                required
-                onChange={(e) => setName(e.target.value)}
-                className="p-1 rounded border"
-                placeholder="Enter your name"
-              />
-              <input
-                required
-                onChange={(e) => setEmail(e.target.value)}
-                className="p-1 rounded border"
-                placeholder="Enter your email"
-              />
-            </div>
+            <form onSubmit={() => rsvpHandler()}>
+              <div className="flex flex-col gap-2">
+                <input
+                  required
+                  onChange={(e) => setName(e.target.value)}
+                  className="p-1 rounded border"
+                  placeholder="Enter your name"
+                />
+                <input
+                  required
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="p-1 rounded border"
+                  placeholder="Enter your email"
+                />
+              </div>
 
-            <p>* You have to make the payment at the Venue</p>
-            <button
-              type="submit"
-              className="bg-rose-600 text-white text-sm px-2 py-1 rounded"
-              onClick={() => rsvpHandler()}
-            >
-              RSVP
-            </button>
+              <p>* You have to make the payment at the Venue</p>
+              <button
+                type="submit"
+                className="bg-rose-600 text-white text-sm px-2 py-1 rounded"
+              >
+                RSVP
+              </button>
+            </form>
           </div>
         </div>
       )}
