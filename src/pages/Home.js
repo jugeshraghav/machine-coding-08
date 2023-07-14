@@ -24,10 +24,10 @@ export const Home = () => {
     ? typeOfEvent !== "All"
       ? searchedEventsArr.filter(({ eventType }) => eventType === typeOfEvent)
       : searchedEventsArr
-    : events?.meetups;
+    : searchedEventsArr;
   return (
     <>
-      <div className="bg-slate-50">
+      <div className="bg-slate-50 w-full h-full">
         <div className="flex justify-between p-4 ">
           <h1 className="font-bold text-xl">Meetup Events</h1>
           <select
