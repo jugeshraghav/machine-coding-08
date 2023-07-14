@@ -27,7 +27,7 @@ export const EventDetail = () => {
         id={eId}
       />
 
-      <div className=" bg-slate-50 flex flex-col justify-center w-full px-2  gap-4 md:flex-row md:gap-6 md:py-4 md:justify-around relative">
+      <div className=" bg-slate-50 flex flex-col justify-center w-full px-2   gap-4 md:flex-row md:gap-6 py-6 md:justify-around relative">
         {/* **********************Left Section Event Details *********************/}
         <div className=" text-left md:w-1/2 ">
           <h1 className="text-2xl font-bold my-1">{currentEvent?.title}</h1>
@@ -144,7 +144,7 @@ export const EventDetail = () => {
           {/****************  RSVP Button********************* */}
           {new Date() < new Date(currentEvent?.eventEndTime) ? (
             <button
-              className="bg-rose-600 text-white text-sm px-2 py-1 rounded w-20 mt-2 hover:bg-white  hover:border hover:border-rose-600 hover:text-rose-600 disabled:bg-slate-500 disabled:hover:border-0 disabled:hover:text-white"
+              className="bg-rose-600 text-white text-sm px-2 py-2 rounded w-20 mt-2 hover:bg-white  hover:border hover:border-rose-600 hover:text-rose-600 disabled:bg-slate-500 disabled:hover:border-0 disabled:hover:text-white"
               disabled={currentEvent?.isPaid}
               onClick={() => setShowModal(true)}
             >

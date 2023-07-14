@@ -40,7 +40,7 @@ export const Home = () => {
             <option value="Offline">Offline</option>
           </select>
         </div>
-        <div className="flex gap-9 flex-wrap m-5 ">
+        <div className="flex gap-9 flex-wrap m-5 justify-center ">
           {filteredArr.length > 0 ? (
             filteredArr?.map((event) => (
               <EventCard event={event} key={event?.id} />
