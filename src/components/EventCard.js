@@ -1,14 +1,13 @@
 import { useNavigate } from "react-router-dom";
 
 export const EventCard = ({ event }) => {
-  const { id, title, eventStartTime, eventEndTime, eventThumbnail, eventType } =
-    event;
+  const { id, title, eventStartTime, eventThumbnail, eventType } = event;
 
   const navigate = useNavigate();
   return (
     <>
       <div
-        className="w-48 h-64  flex flex-col justify-between p-2 cursor-pointer hover:shadow-2xl"
+        className="w-48 h-64 bg-white flex flex-col  p-2 cursor-pointer shadow-2xl gap-4 hover:bg-rose-100"
         onClick={() => navigate(`/event-detail/${id}`)}
       >
         <div className="relative h-2/3">
@@ -17,9 +16,9 @@ export const EventCard = ({ event }) => {
             {eventType}
           </p>
         </div>
-        <div>
+        <div className="flex flex-col gap-2 h-1/3">
           <p className="text-slate-500 text-left text-sm">{eventStartTime}</p>
-          <h1 className="text-xl text-left"> {title}</h1>
+          <h1 className="text-lg text-left"> {title}</h1>
         </div>
       </div>
     </>

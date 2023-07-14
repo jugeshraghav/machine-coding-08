@@ -1,10 +1,9 @@
-import { EventCard } from "../components/EventCard";
-import { Navbar } from "../components/Navbar";
 import { useDataContext } from "../contexts/DataContext";
+import { EventCard } from "../components/EventCard";
 
 export const Home = () => {
   const {
-    state: { events, typeOfEvent },
+    state: { events, typeOfEvent, searchText },
     dispatch,
   } = useDataContext();
 
@@ -14,29 +13,42 @@ export const Home = () => {
   };
 
   //calculated values
+  const searchedEventsArr = events?.meetups?.filter(
+    ({ eventTags, title }) =>
+      title.toLowerCase().includes(searchText.toLowerCase()) ||
+      eventTags.some((tag) =>
+        tag.toLowerCase().includes(searchText.toLowerCase())
+      )
+  );
   const filteredArr = typeOfEvent
     ? typeOfEvent !== "All"
-      ? events?.meetups?.filter(({ eventType }) => eventType === typeOfEvent)
-      : events?.meetups
+      ? searchedEventsArr.filter(({ eventType }) => eventType === typeOfEvent)
+      : searchedEventsArr
     : events?.meetups;
   return (
     <>
-      <Navbar />
-      <div>
-        <h1>Meetup Events</h1>
-        <select
-          onClick={(e) => handleEventType(e)}
-          placeholder="Select Event Type"
-        >
-          <option value="All">All</option>
-          <option value="Online">Online</option>
-          <option value="Offline">Offline</option>
-        </select>
-      </div>
-      <div className="flex gap-2 flex-wrap m-5 justify-evenly">
-        {filteredArr?.map((event) => (
-          <EventCard event={event} key={event?.id} />
-        ))}
+      <div className="bg-slate-50">
+        <div className="flex justify-between p-4 ">
+          <h1 className="font-bold text-xl">Meetup Events</h1>
+          <select
+            onClick={(e) => handleEventType(e)}
+            placeholder="Select Event Type"
+            className="w-48 shadow-lg"
+          >
+            <option value="All">All</option>
+            <option value="Online">Online</option>
+            <option value="Offline">Offline</option>
+          </select>
+        </div>
+        <div className="flex gap-9 flex-wrap m-5 ">
+          {filteredArr.length > 0 ? (
+            filteredArr?.map((event) => (
+              <EventCard event={event} key={event?.id} />
+            ))
+          ) : (
+            <h1 className="text-xl">No Events</h1>
+          )}
+        </div>
       </div>
     </>
   );
