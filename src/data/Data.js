@@ -4,7 +4,7 @@ export const Data = {
       id: "meet001",
       title: "Tech Conference",
       eventStartTime: "2024-09-13T07:00:00",
-      eventEndTime: "2023-07-13T17:00:00",
+      eventEndTime: "2024-09-15T19:00:00",
       location: "Tech Hub",
       address: "123 Main Street, City",
       eventThumbnail: "https://i.postimg.cc/SKrZhNpS/pexels-photo-1181403.jpg",
